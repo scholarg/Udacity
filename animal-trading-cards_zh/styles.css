@@ -1,0 +1,50 @@
+/* 添加 CSS */
+body {
+    border: groove;
+    width: 320px;
+    cursor: pointer;
+    -webkit-box-shadow: 10px 10px 0px -1px rgba(204,204,204,1);
+    -moz-box-shadow: 10px 10px 0px -1px rgba(204,204,204,1);
+    box-shadow: 10px 10px 0px -1px rgba(204,204,204,1);
+    margin: auto;
+}
+.card {
+    border: hidden;
+    margin: 0 auto;
+}
+.name {
+    margin-left: 10px;
+    margin-right: 10px;
+    border: hidden;
+}
+.text {
+    border: groove;
+    margin: 10px auto;
+    /*margin-left: 10px;
+    margin-right: 10px;*/
+    margin: 10px;
+    /*padding-left: 3px;
+    padding-right: 3px;*/
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding: 3px;
+}
+.interesting_knowledge {
+    font-style: italic;
+    font-family: serif;
+}
+ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+img {
+    height: 200px;
+    width: 300px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: hidden;
+}
+.foot-note {
+    text-transform: capitalize;
+}
