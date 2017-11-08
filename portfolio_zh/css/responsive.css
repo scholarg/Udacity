@@ -1,0 +1,177 @@
+@media screen and (max-width: 390px) {
+    .ui.image.seven > img {
+        height: 50px !important;
+        object-fit: cover;
+    }
+    .ui.image.eight > img {
+        height: 50px !important;
+        object-fit: cover;
+    }
+    .ui.image.nine > img {
+        height: 50px !important;
+        object-fit: cover;
+    }
+    .header_inner > .header_title {
+        font-size: 15px;
+        text-transform: uppercase;
+        text-align: right;
+        font-weight: lighter;
+        color: #2d3c49;
+        margin: 0 auto;
+    }
+
+    .header_inner > .header_subtitle {
+        font-size: 10px;
+        text-transform: uppercase;
+        text-align: right;
+        font-weight: 500;
+        color: #2d3c49;
+        margin: 0 auto;
+    }
+    .header_inner > .header_logo {
+        height: 40px;
+        vertical-align: top;
+        float: left;
+        margin: 0 auto;
+        width: 72px;
+    }
+    span {
+        word-wrap: break-word;
+        word-break: normal;
+    }
+}
+
+@media screen and (min-width: 391px) and (max-width: 500px) {
+    .ui.image.seven > img {
+        height: 50px !important;
+        object-fit: cover;
+    }
+    .ui.image.eight > img {
+        height: 50px !important;
+        object-fit: cover;
+    }
+    .ui.image.nine > img {
+        height: 50px !important;
+        object-fit: cover;
+    }
+    .header_inner > .header_title {
+        font-size: 30px;
+        text-transform: uppercase;
+        text-align: right;
+        font-weight: lighter;
+        color: #2d3c49;
+        margin: 0 auto;
+    }
+
+    .header_inner > .header_subtitle {
+        font-size: 10px;
+        text-transform: uppercase;
+        text-align: right;
+        font-weight: 500;
+        color: #2d3c49;
+        margin: 0 auto;
+    }
+    .header_inner > .header_logo {
+        height: 50px;
+        vertical-align: top;
+        float: left;
+        margin: 0 auto;
+        width: 72px;
+    }
+    span {
+        word-wrap: break-word;
+        word-break: normal;
+    }
+}
+
+@media screen and (min-width: 501px) and (max-width: 800px) {
+    .ui.image.seven > img {
+        height: 215px !important;
+        object-fit: cover;
+    }
+
+    .ui.image.eight > img {
+        height: 215px !important;
+        object-fit: cover;
+    }
+
+    .ui.image.nine > img {
+        height: 215px !important;
+        object-fit: cover;
+    }
+    .header_inner > .header_title {
+        font-size: 3rem;
+        text-transform: uppercase;
+        text-align: right;
+        font-weight: lighter;
+        color: #2d3c49;
+        margin: 0 auto;
+    }
+
+    .header_inner > .header_subtitle {
+        font-size: 1rem;
+        text-transform: uppercase;
+        text-align: right;
+        font-weight: 500;
+        color: #2d3c49;
+        margin: 0 auto;
+    }
+
+    .header_inner > .header_logo {
+        height: 72px;
+        vertical-align: top;
+        float: left;
+        margin: 0 auto;
+        width: 72px;
+    }
+    span {
+        word-wrap: break-word;
+        word-break: normal;
+    }
+}
+
+@media screen and (min-width: 801px) {
+    .ui.image.seven > img {
+        height: 215px !important;
+        object-fit: cover;
+    }
+
+    .ui.image.eight > img {
+        height: 215px !important;
+        object-fit: cover;
+    }
+
+    .ui.image.nine > img {
+        height: 215px !important;
+        object-fit: cover;
+    }
+    .header_inner > .header_title {
+        font-size: 3rem;
+        text-transform: uppercase;
+        text-align: right;
+        font-weight: lighter;
+        color: #2d3c49;
+        margin: 0 auto;
+    }
+
+    .header_inner > .header_subtitle {
+        font-size: 1rem;
+        text-transform: uppercase;
+        text-align: right;
+        font-weight: 500;
+        color: #2d3c49;
+        margin: 0 auto;
+    }
+
+    .header_inner > .header_logo {
+        height: 72px;
+        vertical-align: top;
+        float: left;
+        margin: 0 auto;
+        width: 72px;
+    }
+    span {
+        word-wrap: break-word;
+        word-break: normal;
+    }
+}

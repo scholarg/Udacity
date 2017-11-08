@@ -1,0 +1,61 @@
+body {
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+h1 {
+    margin: 0 auto 0.5em auto;
+    display: block;
+}
+
+h3 {
+    text-transform: uppercase;
+    color: #2d3c49;
+}
+
+img {
+    max-width: 100%;
+}
+
+span {
+    color: #7d97ad;
+    font-weight: lighter;
+}
+
+.ui.vertical.basic.segment.container > .ui.grid.container > .featured_work {
+    font-size: 2rem;
+    text-transform: capitalize;
+    /*color: rgba(0, 0, 0, 0.25);*/
+    font-weight: 500;
+    position: relative;
+    color: #7d97ad;
+}
+
+.ui.menu {
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.header_inner {
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: inline;
+    float: left;
+}
+
+.ui.grid.container > .column > .ui.fluid.card {
+    max-width: 100%;
+    width: 1043px;
+}
+
+.ui .three .column .grid .container > .column {
+    padding: 1rem;
+    vertical-align: top;
+    position: relative;
+    display: inline-block;
+}
