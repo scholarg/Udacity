@@ -6,4 +6,8 @@ Study in Udacity
 
 3、portfolio_zh: The portfilio of front-end!
 
+4、frontend-nanodegree-resume: A resume for me!
+
+5、JavaScriptStudy: Learn to use JavaScript!
+
 
