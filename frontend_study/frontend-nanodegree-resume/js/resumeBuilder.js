@@ -5,15 +5,13 @@ This is empty on purpose! Your code to build the resume will go here.
 var bio = {
     "name": "Yisu guan",
     "role": "Web Developer",
-    "contacts": [
-        {
+    "contacts": {
         "mobile": "18932229318",
         "email": "gys2zj@gmail.com",
         "github": "https://github.com/scholarg",
         "twitter": "https://twitter.com/Scholar_g",
         "location": "Nantong Jiangsu China"
-    }
-],
+    },
     "welcomeMessage": "Welcome to accept and see my resume",
     "age": "37",
     "skills": ["Awesomeness", "Python", "Database", "HTML", "JS", "CSS"],
@@ -21,30 +19,16 @@ var bio = {
     display: function() {
         var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
         var formattedName = HTMLheaderName.replace("%data%", bio.name);
-        $("#header").prepend(formattedRole);
-        $("#header").prepend(formattedName);
-        for (var i = 0; i < bio.contacts.length; i++) {
-            var formattedMobile = HTMLmobile.replace("%data%", bio.contacts[i].mobile);
-            $("#topContacts").append(formattedMobile);
-            $("#footerContacts").append(formattedMobile);
-            var formattedEmail = HTMLemail.replace("%data%", bio.contacts[i].email);
-            $("#topContacts").append(formattedEmail);
-            $("#footerContacts").append(formattedEmail);
-            var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts[i].twitter);
-            $("#topContacts").append(formattedTwitter);
-            $("#footerContacts").append(formattedTwitter);
-            var formattedGithub = HTMLgithub.replace("%data%", bio.contacts[i].github);
-            $("#topContacts").append(formattedGithub);
-            $("#footerContacts").append(formattedGithub);
-            var formattedLocation = HTMLlocation.replace("%data%", bio.contacts[i].location);
-            $("#topContacts").append(formattedLocation);
-            $("#footerContacts").append(formattedLocation);
-            };
+        $("#header").prepend(formattedName, formattedRole);
+        var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+        var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+        var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+        var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+        var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+        $("#topContacts, #footerContacts").append(formattedMobile, formattedEmail, formattedTwitter, formattedLocation, formattedGithub);
         var formattedBiopic = HTMLbioPic.replace("%data%", bio.biopic);
-        $("#header").append(formattedBiopic);
         var formattedwelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-        $("#header").append(formattedwelcomeMsg);
-        $("#header").append(HTMLskillsStart);
+        $("#header").append(formattedBiopic, formattedwelcomeMsg, HTMLskillsStart);
         bio.skills.forEach(function(skill){
             var formattedSkill = HTMLskills.replace("%data%", skill);
             $("#skills").append(formattedSkill);
@@ -83,7 +67,7 @@ var education = {
             "title": "Python Full Stack Developer",
             "school": "NetEase",
             "dates": "2016",
-            "url": "http://gscholar.cn"
+            "url": "http://www.163.com"
         }
     ],
 }
@@ -179,7 +163,8 @@ education.display = function() {
         var formattedName = HTMLschoolName.replace("%data%", cv.name);
         var formattedDegree = HTMLschoolDegree.replace("%data%", cv.degree);
         var formattedNameDegree = formattedName + formattedDegree;
-        $(".education-entry:last").append(formattedNameDegree);
+        var formattedNameurl = formattedNameDegree.replace("#", cv.url);
+        $(".education-entry:last").append(formattedNameurl);
         var formattedDates = HTMLschoolDates.replace("%data%", cv.dates);
         $(".education-entry:last").append(formattedDates);
         var formattedLocation = HTMLschoolLocation.replace("%data%", cv.location);
@@ -189,7 +174,9 @@ education.display = function() {
             $(".education-entry:last").append(formattedMajor);
         });
         var formattedUrl = HTMLschoolUrl.replace("%data%", cv.url);
-        $(".education-entry:last").append(formattedUrl);
+        var formattedUrlend = formattedUrl.replace("#", cv.url);
+        $(".education-entry:last").append(formattedUrlend);
+
     });
 
     education.onlineCourses.forEach(function(cv, index, array) {
@@ -198,11 +185,13 @@ education.display = function() {
         var formattedonLineTitle = HTMLonlineTitle.replace("%data%", cv.title);
         var formattedonlineSchool = HTMLonlineSchool.replace("%data%", cv.school);
         var formattedonlineTitleSchool = formattedonLineTitle + formattedonlineSchool
-        $(".onlineCourse-entry:last").append(formattedonlineTitleSchool);
+        var formattedonlineTitleSchoolurl = formattedonlineTitleSchool.replace("#", cv.url);
+        $(".onlineCourse-entry:last").append(formattedonlineTitleSchoolurl);
         var formattedonlineDates = HTMLonlineDates.replace("%data%", cv.dates);
         $(".onlineCourse-entry:last").append(formattedonlineDates);
         var formattedonlineURL = HTMLonlineURL.replace("%data%", cv.url);
-        $(".onlineCourse-entry:last").append(formattedonlineURL)
+        var formattedonlineURLend = formattedonlineURL.replace("#", cv.url);
+        $(".onlineCourse-entry:last").append(formattedonlineURLend)
     });
 }
 
