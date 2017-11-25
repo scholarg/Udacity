@@ -1,6 +1,7 @@
 /*
 This is empty on purpose! Your code to build the resume will go here.
  */
+"use strict";
 
 var bio = {
     "name": "Yisu guan",
@@ -97,7 +98,7 @@ var work = {
     }
 }
 
-var project = {
+var projects = {
     "projects": [
         {
             "title": "www",
@@ -120,7 +121,7 @@ var project = {
         }
     ],
     display: function() {
-        project.projects.forEach(function(project) {
+        projects.projects.forEach(function(project) {
             $("#projects").append(HTMLprojectStart);
             var formattedTitle = HTMLprojectTitle.replace("%data%", project.title);
             var formattedDates = HTMLprojectDates.replace("%data%", project.dates);
@@ -173,9 +174,8 @@ education.display = function() {
             var formattedMajor = HTMLschoolMajor.replace("%data%", major);
             $(".education-entry:last").append(formattedMajor);
         });
-        var formattedUrl = HTMLschoolUrl.replace("%data%", cv.url);
-        var formattedUrlend = formattedUrl.replace("#", cv.url);
-        $(".education-entry:last").append(formattedUrlend);
+        var formattedUrl = HTMLschoolUrl.replace("%data%", cv.url).replace("#", cv.url);
+        $(".education-entry:last").append(formattedUrl);
 
     });
 
@@ -189,9 +189,8 @@ education.display = function() {
         $(".onlineCourse-entry:last").append(formattedonlineTitleSchoolurl);
         var formattedonlineDates = HTMLonlineDates.replace("%data%", cv.dates);
         $(".onlineCourse-entry:last").append(formattedonlineDates);
-        var formattedonlineURL = HTMLonlineURL.replace("%data%", cv.url);
-        var formattedonlineURLend = formattedonlineURL.replace("#", cv.url);
-        $(".onlineCourse-entry:last").append(formattedonlineURLend)
+        var formattedonlineURL = HTMLonlineURL.replace("%data%", cv.url).replace("#", cv.url);
+        $(".onlineCourse-entry:last").append(formattedonlineURL)
     });
 }
 
@@ -199,7 +198,7 @@ education.display = function() {
 bio.display();
 education.display();
 work.display();
-project.display();
+projects.display();
 
 
 $("#main").append(internationalizeButton);
