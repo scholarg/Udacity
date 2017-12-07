@@ -25,6 +25,7 @@
 //     return array;
 // }
 // Shuffle function from https://discussions.youdaxue.com/t/topic/48414
+// The code is referended from https://github.com/yangyunhan/memory-game
 function shuffle() {
     return Math.random()>0.5 ? -1 : 1;
 }
@@ -56,9 +57,16 @@ function shuffle() {
      addDOM($card,cards);
      play($card);
      restart('.restart');
-     //禁止卡片部分的鼠标右键
+     //设置鼠标右键禁用提醒
+     $("div").bind("contextmenu", function(){
+        return false;
+    })
      $('.card').bind("contextmenu", function(e) {
-         return false;
+         if (3 == e.which) {
+            alert("please use the left mouse button")
+        } else {
+            return false;
+        }
      });
  });
 
