@@ -214,7 +214,7 @@ function seconds(bsDate) {
 //成功页面
 function addMessage(counter,startnum,second) {
     $('.container').remove();
-    let html = $('<div class="result"></div>');
+    let html = $('<div class="result animated bounceInDown"></div>');
     let info1 = $('<p class="re-won">Congratulations!</p>');
     let info2 = $('<p class="re-moves">With&nbsp;'+counter+'&nbsp;Moves&nbsp;&nbsp;,&nbsp;&nbsp;'+second+'&nbsp;seconds&nbsp;&nbsp;and&nbsp;&nbsp;'+startnum+'&nbsp;Stars. </p>');
     let info3 = $('<p class="re-moves">Woooooo!</p>');
