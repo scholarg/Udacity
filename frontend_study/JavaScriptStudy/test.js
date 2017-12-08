@@ -1,47 +1,23 @@
-var work = {
-  "jobs": [
-    {
-      "employer": "Udacity",
-      "title": "Course Developer",
-      "location": "Mountain View, CA",
-      "dates": "Feb 2014 - Current",
-      "description": "Who moved my cheese cheesy feet cauliflower cheese. Queso taleggio when the cheese comes out everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
-    },
-    {
-      "employer": "LearnBIG",
-      "title": "Software Engineer",
-      "location": "Seattle, WA",
-      "dates": "May 2013 - Jan 2014",
-      "description": "Who moved my cheese cheesy feet cauliflower cheese. Queso taleggio when the cheese comes out everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
-    },
-    {
-      "employer": "LEAD Academy Charter High School",
-      "title": "Science Teacher",
-      "location": "Nashville, TN",
-      "dates": "Jul 2012 - May 2013",
-      "description": "Who moved my cheese cheesy feet cauliflower cheese. Queso taleggio when the cheese comes out everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
-    },
-    {
-      "employer": "Stratford High School",
-      "title": "Science Teacher",
-      "location": "Nashville, TN",
-      "dates": "Jun 2009 - Jun 2012",
-      "description": "Who moved my cheese cheesy feet cauliflower cheese. Queso taleggio when the cheese comes out everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
-    }
-  ]
-};
+/**
+ * 指导说明：
+编写符合以下条件的 for...of 循环：
 
-// Your code goes here! Let me help you get started
+循环访问 days 数组中的每一天
+将一天的首字母大写
+将这一天输出到控制台中
+代码应该将以下每天输出到控制台中：
 
-function locationizer(work_obj) {
-    var locationArray = [];
-    for (job in work_obj.jobs) {
-        var newLocation = work.obj.jobs[job].location;
-        locationArray.push(newLocation);
-    }
+Sunday
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+Saturday
+ */
 
-    return locationArray;
+const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+for (let day of days) {
+    day = day[0].toUpperCase() + day.slice(1);
+    console.log(day);
 }
-
-// Did locationizer() work? This line will tell you!
-console.log(locationizer(work));
