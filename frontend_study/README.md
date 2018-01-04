@@ -12,4 +12,6 @@ Study in Udacity
 
 6、fend-project-memory-game-master: The memory game which is design with css jquery and html!
 
+7、Arcade Game_zh: A game for my son!
+
 
