@@ -10,6 +10,11 @@
  * 公开访问，以此使编写app.js的时候更加容易
  */
 
+/**
+ * http://discussions.youdaxue.com/t/classic-arcade-game/36088
+ * 以上blog给我很大帮助,感谢!
+ * 很多东西学习和参考了以上blog.
+ */
 var level1 = function() {
     for (col = 0; col < 6; col++) {
         ctx.drawImage(Resources.get('images/water-block.png'), col * 101, -50);
