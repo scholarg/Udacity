@@ -63,7 +63,7 @@ canvas {
     clear: both;
 }
 
-.menuitem a: hover {
+.menuitem a:hover {
     color: #6495ED;
 }
 
@@ -97,7 +97,7 @@ canvas {
     -webkit-touch-callout: none;
 }
 
-.btn: hover {
+.btn:hover {
     text-decoration: none;
 }
 
@@ -132,7 +132,7 @@ footer {
     margin: 0 10px;
 }
 
-.social-icon: hover {
+.social-icon:hover {
     -webkit-transform: scale(1.2,1.2);
     -moz-transform: scale(1.2,1.2);
     -o-transform: scale(1.2,1.2);
