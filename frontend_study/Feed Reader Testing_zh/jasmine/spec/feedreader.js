@@ -26,10 +26,15 @@ $(function() {
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的。
          */
         it('feedUrl are not empty', function () {
-            expect(allFeeds).toBeDefined();
+            sameDetection('url');
+            // expect(allFeeds).toBeDefined();
             for (var i=0; i<allFeeds.length; i++) {
-                expect(allFeeds[i]['url'].length).not.toBe(0);
-            }
+                /**
+                 * 检查 URL 格式是否正确的正规表达式
+                 */
+                var regularExpressionUrl = /^((ht|f)tps?):\/\/([\w\-]+(\.[\w\-]+)*\/)*[\w\-]+(\.[\w\-]+)*\/?(\?([\w\-\.,@?^=%&:\/~\+#]*)+)?/;
+                expect(allFeeds[i].url).toMatch(regularExpressionUrl);
+            };
 
         });
 
@@ -38,11 +43,19 @@ $(function() {
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有名字字段而且不是空的。
          */
          it('feedName are not empty', function () {
+             // expect(allFeeds).toBeDefined();
+             // for (var i=0; i<allFeeds.length; i++) {
+             //     expect(allFeeds[i]['name'].length).not.toBe(0);
+             // };
+             sameDetection('name');
+         });
+
+         function sameDetection(name) {
              expect(allFeeds).toBeDefined();
              for (var i=0; i<allFeeds.length; i++) {
-                 expect(allFeeds[i]['name'].length).not.toBe(0);
+                 expect(allFeeds[i][name].length).not.toBe(0);
              };
-         });
+         }
     })
 
 
@@ -54,8 +67,7 @@ $(function() {
          */
 
         it('is hidden', function() {
-            expect($(document.getElementsByClassName('menu-hidden'))).toBeDefined();
-            expect(($(document.getElementsByClassName('menu-hidden'))).length).not.toBe(0);
+            expect($('body').hasClass('menu-hidden')).toBeTruthy();
         });
 
         /* TODO:
@@ -64,15 +76,13 @@ $(function() {
          * 再次点击的时候是否隐藏。
          */
          it('clicked is active', function() {
-             expect($(document.getElementsByClassName('menu-hidden'))).toBeDefined();
              $(document.getElementsByClassName('menu-icon-link')).trigger('click');
-             expect(($(document.getElementsByClassName('menu-hidden'))).length).toBe(0);
+             expect($('body').hasClass('menu-hidden')).toBeFalsy();
          });
 
          it('clicked is inactive', function() {
-             expect($(document.getElementsByClassName('menu-hidden'))).toBeDefined();
              $(document.getElementsByClassName('menu-icon-link')).trigger('click')
-             expect(($(document.getElementsByClassName('menu-hidden'))).length).not.toBe(0);
+             expect($('body').hasClass('menu-hidden')).toBeTruthy();
          });
 
     })
@@ -91,15 +101,12 @@ $(function() {
         beforeEach(function(done) {
             setTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
             jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
         });
 
-        it('can work', function(done) {
-            expect($(document.getElementsByClassName('feed > entry-link > entry'))).toBeDefined;
-            expect(($(document.getElementsByClassName('feed > entry-link > entry'))).length).toBe(0);
-            done();
+        it('can work', function() {
+            expect($('.feed > .entry-link > .entry')).toBeDefined();
+            expect($('.feed > .entry-link > .entry').length).not.toBe(0);
         });
 
         afterEach(function() {
@@ -121,13 +128,13 @@ $(function() {
             jasmine.DEFAULT_TIMEOUT_INTERVAL = 5000;
 
             loadFeed(0, function() {
-                context = $(document.getElementsByClassName('feed')).html();
+                context = $('.feed').html();
                 loadFeed(1, done);
             });
         });
 
         it('can be loaded correctly!', function(done) {
-            expect($(document.getElementsByClassName('feed')).html()).not.toEqual(context);
+            expect($('.feed').html()).not.toEqual(context);
             done();
         });
 
