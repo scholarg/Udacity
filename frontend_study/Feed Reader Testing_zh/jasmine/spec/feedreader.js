@@ -98,7 +98,7 @@ $(function() {
 
         it('can work', function(done) {
             expect($(document.getElementsByClassName('feed > entry-link > entry'))).toBeDefined;
-            expect(($(document.getElementsByClassName('feed > entry-link > entry'))).length).not.toBe(0);
+            expect(($(document.getElementsByClassName('feed > entry-link > entry'))).length).toBe(0);
             done();
         });
 
