@@ -67,7 +67,7 @@ $(function() {
          */
 
         it('is hidden', function() {
-            expect($('body').hasClass('menu-hidden')).toBeTruthy();
+            expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
         /* TODO:
@@ -77,12 +77,12 @@ $(function() {
          */
          it('clicked is active', function() {
              $(document.getElementsByClassName('menu-icon-link')).trigger('click');
-             expect($('body').hasClass('menu-hidden')).toBeFalsy();
+             expect($('body').hasClass('menu-hidden')).toBe(false);
          });
 
          it('clicked is inactive', function() {
              $(document.getElementsByClassName('menu-icon-link')).trigger('click')
-             expect($('body').hasClass('menu-hidden')).toBeTruthy();
+             expect($('body').hasClass('menu-hidden')).toBe(true);
          });
 
     })
@@ -103,14 +103,41 @@ $(function() {
             jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
             loadFeed(0, done);
         });
+        /**
+         * 一种测试方案
+         */
+        // it('can work', function() {
+        //     expect($('.feed > .entry-link > .entry')).toBeDefined();
+        //     expect($('.feed > .entry-link > .entry').length).not.toBe(0);
+        // });
+        //
+        // afterEach(function() {
+        //     jasmine.DEFAULT_TIMEOUT_INTERVAL = setTimeout;
+        // });
 
-        it('can work', function() {
-            expect($('.feed > .entry-link > .entry')).toBeDefined();
-            expect($('.feed > .entry-link > .entry').length).not.toBe(0);
+        /**
+         * 另外一种经测试方案
+         * 在测试（it）之前，请求两次不一样的数据，
+         * 而且在每一次数据正确返回的时候用变量存储每一次的数据内容。
+         * 当两次结果成功返回的时候，再通知测试用例对内容进行判定，看两者是否不同：
+         */
+        var text1,
+            text2;
+        beforeEach(function(done) {
+            loadFeed(1, function() {
+                text1 = $('.feed').text();
+                console.log("1加载完了:" + text1);
+                loadFeed(0, function() {
+                    text2 = $('.feed').text();
+                    console.log("2加载完了" + text2);
+                    done();
+             });
+         });
         });
 
-        afterEach(function() {
-            jasmine.DEFAULT_TIMEOUT_INTERVAL = setTimeout;
+        it("load container1", function() {
+         expect(text1).not.toEqual(text2);
+         console.log("测试完成");
         });
     })
 
