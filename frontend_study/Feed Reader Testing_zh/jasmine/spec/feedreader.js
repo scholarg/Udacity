@@ -139,6 +139,10 @@ $(function() {
          expect(text1).not.toEqual(text2);
          console.log("测试完成");
         });
+
+        afterEach(function() {
+            jasmine.DEFAULT_TIMEOUT_INTERVAL = setTimeout;
+        });
     })
 
 
