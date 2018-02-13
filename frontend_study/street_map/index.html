@@ -13,8 +13,8 @@
         <div style="padding: 5px 10px">
             <h2>Street Map</h2>
             <div>
-              <input id="show-listings" type="button" value="Show Listings">
-              <input id="hide-listings" type="button" value="Hide Listings">
+                <input id="show-listings" type="button" value="Show Listings">
+                <input id="hide-listings" type="button" value="Hide Listings">
             </div>
             <!-- <input type="text" name="" id="filter" data-bind="value: filter, valueUpdate: 'afterkeydown'"> -->
             <div>
@@ -31,10 +31,11 @@
             </ul>
         </div>
     </div>
-    <img id="menu-btn" src="images/menu.png" data-bind="click: toggleMenu, css: mapClass">
+    <img id="menu-btn" src="images/menu.png" data-bind="click: toggleMenu, css: mapClass" alt="menu">
 
     <div id="map" data-bind="css: {'map-full': !menuVisable()}"></div>
 
+    <script src="js/localtions.js"></script>
     <script src="js/map.js"></script>
     <script src="js/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>

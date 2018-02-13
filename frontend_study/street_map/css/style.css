@@ -104,16 +104,29 @@ html, body{
   }
 
 @media screen and (max-width: 375px) {
+    h2 {
+        font-size: 16px;
+    }
     #menu {
-        display: none;
-        visibility: hidden;
+        display: flex;
     }
     #menu-btn {
-        display: none;
-        visibility: hidden;
+        display: flex;
+        left: 43%;
     }
     #map {
-        width: 100%;
-        left: 0;
+        width: 50%;
+        left: 50%;
+    }
+    #hide-listings,
+    #show-listings {
+      width: 100%;
+    }
+    #zoom-to-area-text {
+      width: 100%;
+    }
+
+    #zoom-to-area {
+      width: 40%;
     }
 }
