@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Map</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="menu" data-bind="if: menuVisable()">
+        <div style="padding: 5px 10px">
+            <h2>Street Map</h2>
+            <div>
+              <input id="show-listings" type="button" value="Show Listings">
+              <input id="hide-listings" type="button" value="Hide Listings">
+            </div>
+            <!-- <input type="text" name="" id="filter" data-bind="value: filter, valueUpdate: 'afterkeydown'"> -->
+            <div>
+                <input id="zoom-to-area-text" type="text" name="" id="filter" data-bind="value: filter, valueUpdate: 'afterkeydown'">
+                <input id="zoom-to-area" type="button" value="Find">
+            </div>
+            <!-- <div>
+              <input id="zoom-to-area-text" type="text" placeholder="Enter your favorite area!">
+              <input id="zoom-to-area" type="button" value="Zoom">
+            </div> -->
+            <ul id="sider_list" data-bind="foreach: filteredLots">
+                <li data-bind="text: title, click: $parent.markLot">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <img id="menu-btn" src="images/menu.png" data-bind="click: toggleMenu, css: mapClass">
+
+    <div id="map" data-bind="css: {'map-full': !menuVisable()}"></div>
+
+    <script src="js/map.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnQVUDt2Uc1l40Hbzq1PxF0rKPMRMYD7Q&callback=initApp" onerror="mapError()"></script>
+</body>
+
+</html>
