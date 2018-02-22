@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Books extends React.Component {
-    // eslint-disable-next-line
     static propTypes = {
         bookinfo: PropTypes.object.isRequired,
         updateBook: PropTypes.func.isRequired
