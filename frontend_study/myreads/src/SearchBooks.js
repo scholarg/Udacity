@@ -1,90 +1,88 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
 import * as BooksAPI from './BooksAPI';
 import Books from './Books';
 
 class SearchBooks extends React.Component {
-    constructor(props) {
-        super(props);
-        this.timer = null;
+
+    constructor () {
+        super();
+        this.state = {
+            query: '',
+            books: []
+        };
     }
 
-    static propTypes = {
-        shelfbooks: PropTypes.array.isRequired,
-        updateBook: PropTypes.func.isRequired
-    };
+    updateQuery = (query) => {
+        const { listBooks } = this.props;
 
-    state = {
-        books: []
-    };
-    /**
-   * 通过关键词搜索书本
-   * @param  {String} query 关键词
-   */
-    search(query) {
-        if (!query) {
-            return null;
+        this.setState({ query: query });
+        const trimmedQuery = query.trim();
+        if (trimmedQuery === '') {
+            return;
         }
-        BooksAPI.search(query).then(searchbooks => {
-            if (searchbooks instanceof Array) {
-                searchbooks.map(searchbook => {
-                    this.props.shelfbooks.forEach(shelfbook => {
-                        if (searchbook.id === shelfbook.id) {
-                            searchbook.shelf = shelfbook.shelf;
+        BooksAPI.search(trimmedQuery, 10).then((response) => {
+            if (response && response.length) {
+                const books = response.map((book) => {
+                    const libBook = listBooks.find((libBook) => libBook.id === book.id);
+                    const shelf = libBook ? libBook.shelf : 'none';
+
+                    return {
+                        id: book.id,
+                        shelf: shelf,
+                        authors: book.authors,
+                        title: book.title,
+                        imageLinks: {
+                            thumbnail: book.imageLinks.thumbnail
                         }
-                    });
-                    return searchbook;
+                    };
                 });
-                this.setState({books: searchbooks});
-            } else {
-                this.setState({books: []});
+                this.setState({ books });
             }
         });
-    }
-    /**
-   * 更新书本信息
-   * @param  {Object} book 更新书本
-   * @param  {String} shelf 书架名
-   */
-    updateBk(book, shelf) {
-        this.props.updateBook(book, shelf).then(() => {
-            this.setState({
-                books: this.state.books.map(bk => {
-                    if (bk.id === book.id) {
-                        bk.shelf = shelf;
-                    }
-                    return bk;
-                })
-            });
-        });
-    }
+    };
 
-    render() {
-        return (<div className="search-books">
+    render () {
+        const { books } = this.state;
+        const { updateBook } = this.props;
+
+        return(
+            <div className="search-books">
             <div className="search-books-bar">
-                <Link className="close-search" to="/">
-                    Close
-                </Link>
-                <div className="search-books-input-wrapper">
-                    <input type="text" placeholder="Search by title or author" onKeyPress={e => {
-                            if (e.key === 'Enter') {
-                                this.search(e.target.value);
-                            }
-                        }}/>
-                </div>
+              <Link
+                to="/"
+                className="close-search"
+              >
+              Close
+              </Link>
+              <div className="search-books-input-wrapper">
+                <input
+                    type="text"
+                    placeholder="Search by title or author"
+                    onChange={ (event) => this.updateQuery(event.target.value) }
+                />
+              </div>
             </div>
             <div className="search-books-results">
-                <ol className="books-grid">
+              <ol className="books-grid">
                     {
-                        this.state.books.map(book => (<li key={book.id}>
-                            <span className="search-book-tag">{book.shelf}</span>
-                            <Books bookinfo={book} updateBook={this.updateBk}/>
-                        </li>))
+                        books.map((book) => (
+                            <li key={ book.id }>
+                                <Books
+                                    id={ book.id }
+                                    shelf={ book.shelf }
+                                    authors={ book.authors }
+                                    title={ book.title }
+                                    imageLinks={ book.imageLinks }
+                                    updateBook={ updateBook }
+                                />
+                            </li>
+                        ))
                     }
-                </ol>
+              </ol>
             </div>
-        </div>);
+          </div>
+        );
     }
 }
 

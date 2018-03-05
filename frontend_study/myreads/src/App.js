@@ -6,53 +6,46 @@ import * as BooksAPI from './BooksAPI';
 import './App.css';
 
 class BooksApp extends React.Component {
-    state = {
-        bookData: []
-        /**
-     * TODO: Instead of using this state variable to keep track of which page
-     * we're on, use the URL in the browser's address bar. This will ensure that
-     * users can use the browser's back and forward buttons to navigate between
-     * pages, as well as provide a good URL they can bookmark and share.
-     */
-        // showSearchPage: false
-    };
-
-    componentDidMount() {
-        this.getAll();
-    };
-
-    /**
-     * 获取书架上所有的书
-     */
-    getAll() {
-        BooksAPI.getAll().then(data => {
-            this.setState({booksData: data});
+    constructor() {
+        super();
+        this.state = BooksAPI.getAll().then((books) => {
+            this.setState({books: books});
         });
     }
 
-    /**
-     * 更新书本信息
-     * @param {object} books
-     * @param {String} bookshelf
-     */
-
     updateBook = (book, shelf) => {
-        return BooksAPI.update(book, shelf).then(() => {
-            this.setState({
-                books: this.state.booksData.map(bk => {
-                    if (bk.id === book.id) {
-                        bk.shelf = shelf;
-                    }
-                    return bk;
-                })
-            });
+        const {books} = this.state;
+
+        const bookIndex = books.findIndex((key) => {
+            return key.id === book.id;
         });
+
+        let stateBooks = Object.assign([], books);
+
+        if (bookIndex === -1) {
+            const newBook = Object.assign({}, book);
+            newBook.shelf = shelf;
+            stateBooks.push(newBook);
+        } else {
+            stateBooks[bookIndex] = Object.assign({}, stateBooks[bookIndex]);
+            stateBooks[bookIndex].shelf = shelf;
+        }
+
+        BooksAPI.update(book, shelf).then(this.setState({books: stateBooks}));
     };
 
     render() {
+        const {books} = this.state;
+
+        if (!books) {
+            return null;
+        }
+
         return (<div className="app">
-            <Route path="/search" render={() => <SearchBooks shelfbooks={this.state.booksData} updateBook={this.updateBook}/>}/>
-            <Route exact="exact" path="/" render={() => (<ListBooks booksData={this.state.booksData} updateBook={this.updateBook}/>)}/>
+            <Route path="/search" render={() => (
+                <SearchBooks listBooks={books} updateBook={this.updateBook}/>)}/>
+            <Route exact="exact" path="/" render={() => (
+                <ListBooks books={books} updateBook={this.updateBook}/>)}/>
         </div>);
     }
 }

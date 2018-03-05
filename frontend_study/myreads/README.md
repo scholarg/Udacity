@@ -93,3 +93,31 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## 项目说明
+1、项目更新后,修复search后添加图书不能主动出现在首页的bug;
+2、项目下载到本地,运行
+
+```
+npm install
+```
+安装需要的软件包;
+3、运行
+
+```
+npm start
+```
+后,输入
+
+```
+http://127.0.0.1:3000
+或者
+http://localhost:3000
+或者
+http://本机Ip:3000
+```
+
+可以打开网站.
+
+
+
