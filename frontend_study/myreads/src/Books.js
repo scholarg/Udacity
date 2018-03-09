@@ -21,11 +21,16 @@ class Books extends React.Component {
         const { title, authors, imageLinks } = this.props;
         const { thumbnail } = imageLinks ? imageLinks : 'http://via.placeholder.com/128x193';
         const { shelf } = this.state;
+        const bookCoverStyle = {
+            width: 128,
+            height: 193,
+            backgroundImage: `url("${ thumbnail }")`
+        };
 
         return(
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={ { width: 128, height: 193, backgroundImage: `url("${ thumbnail }")` } }></div>
+                    <div className="book-cover" style={ bookCoverStyle }></div>
                     <div className="book-shelf-changer">
                         <select
                             value={ shelf }

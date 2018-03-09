@@ -42,23 +42,6 @@ class SearchBooks extends React.Component {
             } else if (displayBooks.length === 0) {
                 alert("No Result! Please Input Again!")
             }
-            // if (response && response.length && !response.hasOwnProperty('error')) {
-            //     const books = response.map((book) => {
-            //         const libBook = listBooks.find((libBook) => libBook.id === book.id);
-            //         const shelf = libBook ? libBook.shelf : 'none';
-            //         const thumbnail = book.imageLinks ? book.imageLinks.thumbnail : 'http://via.placeholder.com/128x193';
-            //         return {
-            //             id: book.id,
-            //             shelf: shelf,
-            //             authors: book.authors,
-            //             title: book.title,
-            //             imageLinks: {
-            //                 thumbnail: thumbnail
-            //             }
-            //         };
-            //     });
-            //     this.setState({ books });
-            // }
         });
     };
 
@@ -77,6 +60,7 @@ class SearchBooks extends React.Component {
               </Link>
               <div className="search-books-input-wrapper">
                 <input
+                    autoFocus
                     type="text"
                     placeholder="Search by title or author"
                     onKeyPress={ e => {if (e.key === "Enter") {
