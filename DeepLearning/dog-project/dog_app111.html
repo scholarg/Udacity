@@ -14348,11 +14348,6 @@ test_{network} = bottleneck_features['test']</code></pre>
 <p><strong>回答:</strong></p>
 <p>我们有一个相对相似的数据集，该模型存在过度拟合的风险，因为新的数据很小。</p>
 
-<pre><code>从ResNet50预先训练的CNN的最终卷积层中提取包含共享高级特征的瓶颈特征
-把特征转换到GAP层以将3D输入平铺到矢量
-将Vector载入一个完全连接层，输出133种犬类分类的预测结果。</code></pre>
-<p>由于ResNet50在分类图像数据方面很人性，并且在包含动物图像的ImageNet数据集上进行预先训练，所以架构适合当前的问题。</p>
-
 </div>
 </div>
 </div>
